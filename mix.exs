@@ -4,7 +4,7 @@ defmodule Issues.Mixfile do
   def project do
     [app: :issues,
      name: "GitHub Issues Fetcher",
-     source_url: "https://github.com/raderj89/issue_fetcher"
+     source_url: "https://github.com/raderj89/issue_fetcher",
      escript: escript_config,
      version: "0.1.0",
      elixir: "~> 1.3",
