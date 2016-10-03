@@ -1,4 +1,5 @@
 defmodule Issues.CLI do
+  import Issues.TableFormatter, only: [print_table_for_columns: 2]
   @default_count 4
 
   @moduledoc """
@@ -55,7 +56,7 @@ defmodule Issues.CLI do
     |> convert_to_list_of_maps
     |> sort_into_ascending_order
     |> Enum.take(count)
-    |> to_table
+    |> print_table_for_columns(["number", "created_at", "title"])
   end
 
   def sort_into_ascending_order(list_of_issues) do
@@ -74,25 +75,5 @@ defmodule Issues.CLI do
   def convert_to_list_of_maps(list) do
     list
     |> Enum.map(&Enum.into(&1, Map.new))
-  end
-
-  def to_table(list_of_maps) do
-    header    = " #   | created_at           | title                         "
-    separator = "-----+----------------------+-------------------------------"
-    IO.puts(header)
-    IO.puts(separator)
-    format_data(list_of_maps)
-  end
-
-  def format_data([]), do: "done"
-
-  def format_data([head | tail]) do
-    format_row(head)
-    |> IO.puts
-    format_data(tail)
-  end
-
-  def format_row(row) do
-    "#{row["number"]} | #{row["created_at"]} | #{row["title"]}"
   end
 end
