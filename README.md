@@ -11,3 +11,4 @@ This project is included in [Programming Elixir](https://pragprog.com/book/elixi
 - `cd issue_fetcher`
 - Run the app from the command line: `$ ./issues <github-username> <repo> <number-of-issues default=4>`
   - e.g.: `$ ./issues elixir-lang elixir 10`
+  - if you leave out a number, the app defaults the number of issues to 4
